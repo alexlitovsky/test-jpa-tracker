@@ -1,5 +1,7 @@
 # test-jpa-tracker
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
 A small JPA testing utility that automatically cleans up entities created during a test.
 
 ## The Problem
@@ -12,11 +14,9 @@ Wrap your `EntityManager` with a tracking proxy. The proxy records every entity 
 
 ## Installation
 
-The library is published to GitHub Packages under `com.alexlitovsky`.
-
 ```xml
 <dependency>
-    <groupId>com.alexlitovsky</groupId>
+    <groupId>io.github.alterioncorp</groupId>
     <artifactId>test-jpa-tracker</artifactId>
     <version>1.0.0</version>
     <scope>test</scope>
@@ -60,3 +60,7 @@ void test() {
 
 - Java 21+
 - Jakarta Persistence API 3.x (provided by your application or test container)
+
+## License
+
+Licensed under the [Apache License 2.0](LICENSE).

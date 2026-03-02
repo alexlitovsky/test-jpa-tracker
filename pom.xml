@@ -4,22 +4,33 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.alexlitovsky</groupId>
+		<groupId>io.github.alterioncorp</groupId>
 		<artifactId>parent-pom</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<artifactId>test-jpa-tracker</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<distributionManagement>
-		<repository>
-			<id>github</id>
-			<url>https://maven.pkg.github.com/alexlitovsky/test-jpa-tracker</url>
-		</repository>
-	</distributionManagement>
-	
+	<name>test-jpa-tracker</name>
+	<description>JPA testing utility that automatically cleans up entities created during a test.</description>
+	<url>https://github.com/alterioncorp/test-jpa-tracker</url>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<connection>scm:git:git://github.com/alterioncorp/test-jpa-tracker.git</connection>
+		<developerConnection>scm:git:ssh://github.com/alterioncorp/test-jpa-tracker.git</developerConnection>
+		<url>https://github.com/alterioncorp/test-jpa-tracker</url>
+	</scm>
+
 	<dependencies>
 		<dependency>
 			<groupId>jakarta.persistence</groupId>
