@@ -1,0 +1,15 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [develop, main]
+
+jobs:
+  build-and-deploy:
+    permissions:
+      contents: read
+      packages: write
+    uses: alexlitovsky/.github/.github/workflows/reusable-build.yml@main
+    with:
+      mvn-goal: clean deploy -U
+    secrets: inherit
