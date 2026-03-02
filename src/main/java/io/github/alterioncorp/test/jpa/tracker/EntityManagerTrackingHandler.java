@@ -1,4 +1,4 @@
-package com.alexlitovsky.test.jpa.tracker;
+package io.github.alterioncorp.test.jpa.tracker;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -23,7 +23,7 @@ class EntityManagerTrackingHandler implements InvocationHandler {
 
 	private final EntityManager delegate;
 	private final LinkedList<EntityDescriptor> insertedEntityDescriptors;
-	
+
 	EntityManagerTrackingHandler(EntityManager delegate) {
 		super();
 		this.delegate = delegate;
@@ -45,7 +45,7 @@ class EntityManagerTrackingHandler implements InvocationHandler {
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
 		Object result;
-		
+
 		try {
 
 			switch (method.getName()) {
@@ -78,16 +78,16 @@ class EntityManagerTrackingHandler implements InvocationHandler {
 		catch (InvocationTargetException e) {
 			throw e.getCause();
 		}
-		
+
 		return result;
 	}
-	
+
 	private EntityDescriptor descriptorOf(Object entity) {
 		return new EntityDescriptor(
 				entity.getClass(),
 				delegate.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entity));
 	}
-	
+
 	private void removeTrackedEntities() {
 		for (EntityDescriptor descriptor : insertedEntityDescriptors.reversed()) {
 			Object entity = delegate.find(descriptor.type, descriptor.id);
@@ -96,8 +96,8 @@ class EntityManagerTrackingHandler implements InvocationHandler {
 			}
 		}
 	}
-	
-	private void runInTransaction(Runnable task) {		
+
+	private void runInTransaction(Runnable task) {
 		delegate.getTransaction().begin();
 		try {
 			task.run();

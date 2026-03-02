@@ -1,4 +1,4 @@
-package com.alexlitovsky.test.jpa.tracker;
+package io.github.alterioncorp.test.jpa.tracker;
 
 import java.lang.reflect.Proxy;
 

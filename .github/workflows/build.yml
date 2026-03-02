@@ -2,11 +2,11 @@ name: Build
 
 on:
   push:
-    branches-ignore: [develop, main]
+    branches-ignore: [main]
 
 jobs:
   build:
-    uses: alexlitovsky/.github/.github/workflows/reusable-build.yml@main
+    uses: alterioncorp/.github/.github/workflows/reusable-build.yml@main
     with:
       mvn-goal: clean verify -U
     secrets: inherit
