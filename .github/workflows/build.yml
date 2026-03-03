@@ -6,7 +6,24 @@ on:
 
 jobs:
   build:
-    uses: alterioncorp/.github/.github/workflows/reusable-build.yml@main
-    with:
-      mvn-goal: clean verify -U
-    secrets: inherit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - uses: alterioncorp/.github/.github/actions/maven-settings@main
+
+      - name: Build
+        run: mvn clean verify -U
+        env:
+          MAVEN_USERNAME: ${{ github.actor }}
+          MAVEN_TOKEN: ${{ secrets.GITHUB_TOKEN }}
