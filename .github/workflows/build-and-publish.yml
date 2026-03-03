@@ -8,9 +8,8 @@ jobs:
   build-and-publish:
     permissions:
       contents: read
-      packages: write
     uses: alterioncorp/.github/.github/workflows/reusable-build.yml@main
     with:
-      mvn-goal: clean deploy -U
-      sign: true
+      mvn-goal: clean deploy -U -Ppublish
+      setup-gpg: true
     secrets: inherit
