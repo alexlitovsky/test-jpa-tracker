@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches-ignore: [main]
+    branches-ignore: [main, develop]
   workflow_dispatch:
 
 jobs:
@@ -25,6 +25,3 @@ jobs:
 
       - name: Build
         run: mvn clean verify -U
-        env:
-          MAVEN_USERNAME: ${{ github.actor }}
-          MAVEN_TOKEN: ${{ secrets.GITHUB_TOKEN }}

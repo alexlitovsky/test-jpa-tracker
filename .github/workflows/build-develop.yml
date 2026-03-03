@@ -1,0 +1,30 @@
+name: Publish Snapshot
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  publish-snapshot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - uses: alterioncorp/.github/.github/actions/maven-settings@main
+
+      - name: Publish Snapshot
+        run: mvn clean deploy -U -Pgithub-packages
+        env:
+          MAVEN_USERNAME: ${{ github.actor }}
+          MAVEN_TOKEN: ${{ secrets.GITHUB_TOKEN }}

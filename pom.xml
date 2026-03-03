@@ -31,6 +31,13 @@
 		<url>https://github.com/alterioncorp/test-jpa-tracker</url>
 	</scm>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/alterioncorp/test-jpa-tracker</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>jakarta.persistence</groupId>
