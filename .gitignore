@@ -7,3 +7,5 @@ target/
 .settings/
 
 # Claude Code
+.claude/.cache/
+.claude/settings.local.json
