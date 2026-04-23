@@ -1,4 +1,4 @@
-name: Build and Publish Snapshot
+name: Build
 
 on:
   workflow_dispatch:
@@ -6,11 +6,10 @@ on:
     branches: [develop]
 
 jobs:
-  publish-snapshot:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
 
     steps:
       - uses: actions/checkout@v4
@@ -24,8 +23,5 @@ jobs:
 
       - uses: alterioncorp/.github/.github/actions/maven-settings@main
 
-      - name: Publish Snapshot
-        run: mvn clean deploy -U -Pgithub-packages
-        env:
-          MAVEN_USERNAME: ${{ github.actor }}
-          MAVEN_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: mvn clean verify -U
